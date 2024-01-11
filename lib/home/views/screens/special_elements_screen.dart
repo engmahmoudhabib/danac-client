@@ -103,13 +103,12 @@ class SpecialElementsScreen extends StatelessWidget {
                               true,
                               ScanMode.BARCODE,
                             );
-                                if (barcodeScanRes != '-1') {
-                                              controller.searchController
-                                                  ?.text = barcodeScanRes;
-                                            } else {
-                                              controller.searchController
-                                                  ?.clear();
-                                            }
+                            if (barcodeScanRes != '-1') {
+                              controller.searchController?.text =
+                                  barcodeScanRes;
+                            } else {
+                              controller.searchController?.clear();
+                            }
                             controller.getSearchProducts(true);
                           },
                           child: Image.asset(
@@ -124,13 +123,14 @@ class SpecialElementsScreen extends StatelessWidget {
                   controller.searchProducts.isEmpty
                       ? SizedBox(
                           height: MediaQuery.of(context).size.height * 0.68,
-                          width: MediaQuery.of(context).size.width * 0.85,
+                          width: MediaQuery.of(context).size.width * 0.95,
                           child: Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: AnimationLimiter(
                               child: GridView.count(
                                 crossAxisCount: 3,
-                                childAspectRatio: 10 / 20,
+                                crossAxisSpacing: 5,
+                                childAspectRatio: 3.37 / 5.8,
                                 children: List.generate(
                                   controller.specialProducts.length,
                                   (int index) {
@@ -197,16 +197,21 @@ class SpecialElementsScreen extends StatelessWidget {
                                                                 .size
                                                                 .width *
                                                             0.3,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              15.0),
-                                                      child: Image.network(
-                                                        controller
-                                                            .specialProducts[
-                                                                index]
-                                                            .image,
-                                                        fit: BoxFit.cover,
+                                                    child: Padding(
+                                                      padding:
+                                                          const EdgeInsets.all(
+                                                              8.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
+                                                        child: Image.network(
+                                                          controller
+                                                              .specialProducts[
+                                                                  index]
+                                                              .image,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
@@ -228,6 +233,10 @@ class SpecialElementsScreen extends StatelessWidget {
                                                               .specialProducts[
                                                                   index]
                                                               .name,
+                                                          overflow:
+                                                              TextOverflow.clip,
+                                                          maxLines: 1,
+                                                          softWrap: true,
                                                           style: TextStyle(
                                                             color: Colors.white,
                                                             fontSize: 15,
@@ -318,41 +327,47 @@ class SpecialElementsScreen extends StatelessWidget {
                                   child: GridView.count(
                                     primary: false,
                                     crossAxisCount: 3,
-                                    childAspectRatio: 4 / 5.8,
+                                    crossAxisSpacing: 5,
+                                    childAspectRatio: 3.2 / 5.85,
                                     children: List.generate(
                                         controller.searchProducts.length,
                                         (index) {
                                       return Stack(
                                         children: [
                                           SizedBox(
-                                            height: 200,
+                                            height: 185,
                                             child: Card(
                                               elevation: 5,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(15.0),
                                               ),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(15.0),
-                                                child: Image.network(
-                                                  controller
-                                                      .searchProducts[index]
-                                                      .image,
-                                                  fit: BoxFit.cover,
+                                              child: Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          15.0),
+                                                  child: Image.network(
+                                                    controller
+                                                        .searchProducts[index]
+                                                        .image,
+                                                    fit: BoxFit.cover,
+                                                  ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                           Positioned(
-                                            top: 140,
+                                            top: 150,
                                             child: FadeInLeft(
                                               child: SizedBox(
                                                 width: MediaQuery.of(context)
                                                         .size
                                                         .width *
                                                     0.3,
-                                                height: 29,
+                                                height: 31,
                                                 child: controller.isAddingToCart
                                                             .value ==
                                                         true
@@ -365,7 +380,14 @@ class SpecialElementsScreen extends StatelessWidget {
                                                     : ElevatedButton(
                                                         onPressed: () {},
                                                         child: Text(
-                                                          'add_to_cart'.tr,
+                                                          controller
+                                                              .searchProducts[
+                                                                  index]
+                                                              .name,
+                                                          overflow:
+                                                              TextOverflow.clip,
+                                                          maxLines: 1,
+                                                          softWrap: true,
                                                           style: TextStyle(
                                                             color: Colors.white,
                                                             fontSize: 15,
