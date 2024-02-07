@@ -31,12 +31,11 @@ import 'package:storeapp/home/providers/profile_provider.dart';
 import 'package:storeapp/home/views/screens/agent_home_screen.dart';
 import 'package:storeapp/home/views/screens/agent_products_screen.dart';
 import 'package:storeapp/home/views/screens/home_screen.dart';
-import 'package:storeapp/home/views/screens/navigation_screen.dart';
 import 'package:storeapp/home/views/widgets/add_to_cart_successfuly_dialog.dart';
 import 'package:storeapp/home/views/widgets/order_success_dialog.dart';
 import 'package:storeapp/notifications/views/screens/notifications_screen.dart';
 import 'package:storeapp/settings/views/screens/settings_screen.dart';
-import 'package:geocoder2/geocoder2.dart';
+
 
 class HomeController extends GetxController
     with GetSingleTickerProviderStateMixin {

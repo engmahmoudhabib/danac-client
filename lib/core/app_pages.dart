@@ -5,19 +5,24 @@ import 'package:storeapp/login/bindings/login_bindings.dart';
 import 'package:storeapp/login/views/screens/login_screen.dart';
 import 'package:storeapp/sign_up/views/screens/sign_up_screen.dart';
 import 'package:storeapp/splash/views/screens/splash_screen.dart';
+import 'package:storeapp/start_screen.dart';
 
 part 'app_routes.dart';
 
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.START;
 
   static final routes = [
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginScreen(),
       binding: LoginBinding(),
+    ),
+    GetPage(
+      name: _Paths.START,
+      page: () => StartScreen(),
     ),
     GetPage(
       name: _Paths.HOME,
@@ -28,7 +33,7 @@ class AppPages {
       name: _Paths.SPLASH,
       page: () => SplashScreen(),
     ),
-     GetPage(
+    GetPage(
       name: _Paths.SIGNUP,
       page: () => SignUpScreen(),
     ),

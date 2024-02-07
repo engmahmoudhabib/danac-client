@@ -5,7 +5,6 @@ import 'package:storeapp/core/colors.dart';
 import 'package:storeapp/core/images.dart';
 import 'package:storeapp/login/views/widgets/custom_textField.dart';
 import 'package:storeapp/sign_up/controllers/sign_up_controller.dart';
-import 'package:storeapp/sign_up/views/screens/map_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({super.key});
@@ -38,6 +37,7 @@ class SignUpScreen extends StatelessWidget {
                       child: ListTile(
                         title: Text(
                           'create_account'.tr,
+                          textAlign: TextAlign.center,
                           textDirection: Get.locale!.languageCode == 'ar'
                               ? TextDirection.rtl
                               : TextDirection.ltr,
@@ -49,12 +49,13 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         subtitle: Text(
                           'please_insert_info'.tr,
+                          textAlign: TextAlign.center,
                           textDirection: Get.locale!.languageCode == 'ar'
                               ? TextDirection.rtl
                               : TextDirection.ltr,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 18,
+                            fontSize: 13.39,
                             color: Colors.white,
                           ),
                         ),
@@ -64,7 +65,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
               FadeInDown(
                 child: CustomTextField(
@@ -72,6 +73,20 @@ class SignUpScreen extends StatelessWidget {
                   prefixIcon: AppImages.profile,
                   suffixIcon: null,
                   hint: 'name'.tr,
+                  isPassword: false,
+                  textInputAction: TextInputAction.next,
+                  textInputType: TextInputType.emailAddress,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              FadeInDown(
+                child: CustomTextField(
+                  controller: controller.shopNameController,
+                  prefixIcon: AppImages.profile,
+                  suffixIcon: null,
+                  hint: 'shop_name'.tr,
                   isPassword: false,
                   textInputAction: TextInputAction.next,
                   textInputType: TextInputType.emailAddress,
@@ -94,15 +109,24 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.02,
               ),
-                  FadeInDown(
-                child: CustomTextField(
-                  controller: controller.emailController,
-                  prefixIcon: null,
-                  suffixIcon: null,
-                  hint: 'email'.tr,
-                  isPassword: false,
-                  textInputAction: TextInputAction.next,
-                  textInputType: TextInputType.emailAddress,
+              FadeInDown(
+                child: InkWell(
+                  onTap: () async {
+                    controller.showTimeRangePicker(context);
+                  },
+                  child: AbsorbPointer(
+                    absorbing: true,
+                    child: CustomTextField(
+                      controller: controller.workTimeController,
+                      prefixIcon: null,
+                      suffixIcon: null,
+                      readOnly: true,
+                      hint: 'work_time'.tr,
+                      isPassword: false,
+                      textInputAction: TextInputAction.next,
+                      textInputType: TextInputType.emailAddress,
+                    ),
+                  ),
                 ),
               ),
               SizedBox(
@@ -114,6 +138,20 @@ class SignUpScreen extends StatelessWidget {
                   prefixIcon: AppImages.lock,
                   suffixIcon: AppImages.eye,
                   hint: 'password'.tr,
+                  isPassword: true,
+                  textInputAction: TextInputAction.done,
+                  textInputType: TextInputType.emailAddress,
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              FadeInRight(
+                child: CustomTextField(
+                  controller: controller.confirmPasswordController,
+                  prefixIcon: AppImages.lock,
+                  suffixIcon: AppImages.eye,
+                  hint: 'confirm_password'.tr,
                   isPassword: true,
                   textInputAction: TextInputAction.done,
                   textInputType: TextInputType.emailAddress,
@@ -133,12 +171,9 @@ class SignUpScreen extends StatelessWidget {
                           ),
                         )
                       : ElevatedButton(
-                          onPressed: () {
-                           // controller.signUp(context);
-                             Get.to(MapScreen());
-                          },
+                          onPressed: () {},
                           child: Text(
-                            'd_location'.tr,
+                            'create_account'.tr,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 15,
@@ -151,7 +186,7 @@ class SignUpScreen extends StatelessWidget {
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0),
+                                borderRadius: BorderRadius.circular(8.0),
                                 side: BorderSide(
                                   color: AppColors.red,
                                 ),

@@ -7,10 +7,11 @@ class MyLocale implements Translations {
           "login": 'تسجيل الدخول',
           'happy_to_see_you':
               'سعداء لرؤيتك مرة أخرى , الرجاء إدخال رقم الموبايل وكلمة المرور',
-          'phone': 'رقم الموبايل',
+          'phone': 'رقم الهاتف',
           'password': 'كلمة المرور',
           'log': 'دخول',
           'error': 'خطأ',
+          'work_time': 'أوقات العمل',
           'please_try_again': 'يرجى إعادة المحاولة',
           'welcome': 'مرحباً بك في تطبيق دناك الخاص بك',
           'time_to_manage': 'حان الوقت لإدارة المخزون و المنتجات',
@@ -42,6 +43,8 @@ class MyLocale implements Translations {
           'french': 'الفرنسية',
           'are_you_sure_logout': 'هل انت متأكد من تسجيل الخروج؟',
           'ok': 'موافق',
+          'from': 'من',
+          'to': 'إلى',
           'cancel': 'إلغاء',
           'Add_cat': 'إضافة صنف جديد',
           'prod': 'منتج',
@@ -75,7 +78,7 @@ class MyLocale implements Translations {
           'cartoon': 'الكرتونة',
           'edit': 'تعديل',
           'delete': 'حذف',
-          'd_location': 'تحديد موقعي',
+          'd_location': 'تحديد الموقع',
           'd_location_2': 'الرجاء تحديد موقعك على الخريطة ليتم قبول حسابك',
           'sups': 'مزود',
           'add_suppliers': 'إضافة مورد',
@@ -166,6 +169,7 @@ class MyLocale implements Translations {
           'order_date': 'تاريخ الطلب',
           'contact_info': 'بيانات الاتصال',
           'order_details': 'تفاصيل الطلب',
+          'shop_name': 'اسم المتجر',
           'points_details': 'تفاصيل النقاط',
           'categories_details': 'تفاصيل الفئات',
           'how_to_use_my_points': 'كيف يمكنني أن أستخدم نقاطي ؟',
@@ -198,7 +202,7 @@ class MyLocale implements Translations {
           'proxy_n': 'مندوب',
           'conducteur': 'سائق',
           'follow_order': 'توصيل الطلب',
-          'phone_or_email': 'الموبايل أو الإيميل',
+          'phone_or_email': 'رقم الهاتف',
           "Location permissions are permanently denied":
               'تم رفض أذونات الموقع بشكل دائم',
           "GPS Service is not enabled, turn on GPS location":
@@ -226,10 +230,29 @@ class MyLocale implements Translations {
           'client_data': 'بيانات العميل',
           'order_address': 'عنوان التوصيل',
           'city': 'العنوان',
-          'location_tracking': 'تتبع الموقع' , 
-          'Background location in progress': 'يتم الآن تتبع موقعكم'
+          'location_tracking': 'تتبع الموقع',
+          'Background location in progress': 'يتم الآن تتبع موقعكم',
+          'check_prices':
+              'قم بالتسجيل للاطلاع على قائمة المنتجات والأسعار والعروض',
+          'det_your_position':
+              ' حدد موقع محلك بشكل صحيح على الخريطة لاستلام طلبياتك',
+          'click_here_if_you': 'يمكنك الضغط هنا مباشرة إذا كنت متواجد في المحل',
+          'baladieh': 'البلدية',
+          'state': 'الولاية',
+          'next': 'التالي',
+          "Choose event time": 'اختر أوقات العمل',
+          "Back": 'رجوع'
         },
         "fr_FR": {
+          "Back": 'Dos',
+          "Choose event time": 'Choisissez les heures de travail',
+          'next': 'le suivant',
+          'state': "l'état",
+          'baladieh': 'Municipal',
+          'click_here_if_you':
+              'Vous pouvez cliquer ici directement si vous êtes dans le magasin',
+          'check_prices':
+              'Inscrivez-vous pour voir la liste des produits, prix et offres',
           "login": 'Se Connecter',
           'happy_to_see_you':
               'Nous sommes heureux de vous revoir, merci de saisir votre numéro de portable et votre mot de passe',
@@ -250,6 +273,7 @@ class MyLocale implements Translations {
           'categories': 'Articles',
           'suppliers': 'Fournisseurs',
           'clients': 'Clients',
+          'work_time': 'Temps de travail',
           'outputs': 'Les Sorties',
           'inputs': 'Saisir',
           'destoyed': 'Biens Endommagés',
@@ -265,10 +289,13 @@ class MyLocale implements Translations {
           'lang': 'La Langue',
           'logout': 'Se Déconnecter',
           'arabic': "L'arabe",
+          'shop_name': 'Nom du magasin',
           'french': 'Français',
           'are_you_sure_logout': "Êtes-vous sûr de vous déconnecter?",
           'ok': "D'ACCORD",
           'cancel': 'Annulation',
+          'det_your_position':
+              'Localisez correctement votre magasin sur la carte pour recevoir vos commandes',
           'Add_cat': 'Ajouter une nouvelle catégorie',
           'prod': 'Projet',
           'product': 'Projet',
@@ -343,6 +370,8 @@ class MyLocale implements Translations {
           'old_debts': 'Dettes antérieures',
           'returns_products': 'Produits de rappel',
           'discount': 'Rabais',
+          'from': 'Depuis',
+          'to': 'à',
           'paid_money': "Le montant payé",
           'product_deleted_successfully':
               'Le produit a été supprimé avec succès',
@@ -428,7 +457,7 @@ class MyLocale implements Translations {
           'proxy_n': 'Représentant',
           'conducteur': 'conducteur',
           'follow_order': 'Livraison de la commande',
-          'phone_or_email': 'Email ou numéro de téléphone',
+          'phone_or_email': 'Téléphone',
           "Location permissions are permanently denied":
               'Les autorisations du site ont été définitivement refusées',
           "GPS Service is not enabled, turn on GPS location":
@@ -461,8 +490,8 @@ class MyLocale implements Translations {
           'city': "l'adresse",
           'follow_order_on_map': "Suivre la commande sur la carte",
           'accept_and_continue': "Accepter et suivre",
-          'location_tracking': 'Suivi de localisation' , 
-          'Background location in progress' : 'Votre position est suivie'
+          'location_tracking': 'Suivi de localisation',
+          'Background location in progress': 'Votre position est suivie'
         }
       };
 }

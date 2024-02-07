@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:storeapp/core/colors.dart';
 
 class CustomTextField extends StatefulWidget {
-   CustomTextField({
+  CustomTextField({
     super.key,
     required this.controller,
     required this.prefixIcon,
@@ -16,6 +16,7 @@ class CustomTextField extends StatefulWidget {
     required this.textInputType,
     this.onChange,
     this.onSubmitted,
+    this.readOnly,
   });
 
   final TextEditingController? controller;
@@ -25,8 +26,9 @@ class CustomTextField extends StatefulWidget {
   final bool isPassword;
   final TextInputAction textInputAction;
   final TextInputType textInputType;
-  Function(String)? onChange; 
-  Function(String)? onSubmitted; 
+  final bool? readOnly;
+  Function(String)? onChange;
+  Function(String)? onSubmitted;
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -42,10 +44,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
       height: 48,
       child: Material(
         elevation: 10.0,
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(8),
         child: TextField(
           controller: widget.controller,
-          onChanged:  widget.onChange,
+          onChanged: widget.onChange,
+          readOnly: widget.readOnly != null ? widget.readOnly!: false,
           onSubmitted: widget.onSubmitted,
           cursorColor: AppColors.red,
           obscureText: widget.isPassword ? !showPassword : false,
@@ -75,13 +78,14 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 : null,
             enabledBorder: OutlineInputBorder(
               borderSide: BorderSide(width: 0.5, color: Colors.transparent),
-              borderRadius: BorderRadius.circular(50.0),
+              borderRadius: BorderRadius.circular(8.0),
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(width: 3, color: AppColors.red),
-              borderRadius: BorderRadius.circular(50.0),
+              borderRadius: BorderRadius.circular(8.0),
             ),
-            hintText: widget.hint,
+            //hintText: widget.hint,
+            labelText: widget.hint,
             hintStyle: TextStyle(
               color: Colors.grey,
               fontWeight: FontWeight.w400,

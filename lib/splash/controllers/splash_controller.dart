@@ -4,13 +4,13 @@ import 'package:storeapp/splash/providers/splash_provider.dart';
 import 'package:storeapp/splash/models/refresh_request_model.dart';
 import 'package:get_storage/src/storage_impl.dart';
 import 'package:storeapp/core/app_pages.dart';
+import 'package:storeapp/start_screen.dart';
 
 class SplashController extends GetxController {
   RxBool isLoading = false.obs;
 
   final SplashProvider _splashProvider = SplashProvider();
   refreshToken() async {
-  
     isLoading.value = true;
     final response = await _splashProvider.refreshToken(
       RefreshTokenRequestModel(
@@ -34,7 +34,7 @@ class SplashController extends GetxController {
           ),
         ),
       );
-      Get.offAllNamed(Routes.LOGIN);
+      Get.offAllNamed(Routes.START);
     }
     isLoading.value = false;
   }

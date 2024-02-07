@@ -1,8 +1,6 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
-import 'package:storeapp/core/app_pages.dart';
 import 'package:storeapp/core/colors.dart';
 import 'package:storeapp/core/images.dart';
 import 'package:storeapp/login/controller/login_controller.dart';
@@ -46,6 +44,7 @@ class LoginScreen extends StatelessWidget {
                           textDirection: Get.locale!.languageCode == 'ar'
                               ? TextDirection.rtl
                               : TextDirection.ltr,
+                              textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 32,
@@ -54,6 +53,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         subtitle: Text(
                           'happy_to_see_you'.tr,
+                            textAlign: TextAlign.center,
                           textDirection: Get.locale!.languageCode == 'ar'
                               ? TextDirection.rtl
                               : TextDirection.ltr,
@@ -157,7 +157,7 @@ class LoginScreen extends StatelessWidget {
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0),
+                                borderRadius: BorderRadius.circular(8.0),
                                 side: BorderSide(
                                   color: AppColors.red,
                                 ),
@@ -167,42 +167,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                 ),
               ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-              GetStorage().read('env') == 'agent'
-                  ? SizedBox(
-                      width: MediaQuery.of(context).size.width * 0.75,
-                      child: Row(
-                        children: [
-                          Text(
-                            'dont_have_account'.tr,
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.toNamed(Routes.SIGNUP);
-                            },
-                            child: Text(
-                              'create_account'.tr,
-                              style: TextStyle(
-                                color: AppColors.red,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  : SizedBox.shrink()
+         
             ],
           ),
         ),

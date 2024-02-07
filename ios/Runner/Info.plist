@@ -9,9 +9,9 @@
 		<key>NSLocationAlwaysUsageDescription</key>
 		<string>This app needs access to location when in the background.</string>
 		<key>BGTaskSchedulerPermittedIdentifiers</key>
-<array>
-    <string>dev.flutter.background.refresh</string>
-</array>
+		<array>
+			<string>dev.flutter.background.refresh</string>
+		</array>
 		<key>NSLocationTemporaryUsageDescriptionDictionary</key>
 		<dict>
 			<key>MGLMapboxAccessToken</key>
@@ -65,7 +65,6 @@
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
 		<key>UIStatusBarHidden</key>
-		
 		<false/>
 	</dict>
 </plist>

@@ -75,7 +75,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.05,
                 ),
                 FadeInLeft(
                   child: SizedBox(
@@ -105,7 +105,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50.0),
+                                  borderRadius: BorderRadius.circular(8.0),
                                   side: BorderSide(
                                     color: AppColors.red,
                                   ),

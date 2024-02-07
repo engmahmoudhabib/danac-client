@@ -29,4 +29,7 @@ class AppImages {
   static final String prise2 = 'assets/images/prise.jpg';
   static final String waiting_account = 'assets/images/waiting_account.png';
   static final String mapman = 'assets/images/mapman.png';
+  static final String logoWhite = 'assets/images/logo_white.png';
+  static final String locationTarget = 'assets/images/location_target.png';
+   static final String arrow = 'assets/images/arrow.png';
 }
