@@ -11,6 +11,7 @@ class MyLocale implements Translations {
           'password': 'كلمة المرور',
           'log': 'دخول',
           'error': 'خطأ',
+          'pass_doesnt_match' :'كلمة المرور و تأكيد كلمة المرور غير متطابقين',
           'work_time': 'أوقات العمل',
           'please_try_again': 'يرجى إعادة المحاولة',
           'welcome': 'مرحباً بك في تطبيق دناك الخاص بك',
@@ -200,9 +201,12 @@ class MyLocale implements Translations {
           'new_password': 'كلمة المرور الجديدة',
           'confirm_newpassword': 'تأكيد كلمة المرور الجديدة',
           'proxy_n': 'مندوب',
+           'user_id':'الرقم التسلسلي',
           'conducteur': 'سائق',
           'follow_order': 'توصيل الطلب',
           'phone_or_email': 'رقم الهاتف',
+          'email':'الإيميل',
+          'unknown_error':'خطأ غير متوقع',
           "Location permissions are permanently denied":
               'تم رفض أذونات الموقع بشكل دائم',
           "GPS Service is not enabled, turn on GPS location":
@@ -342,6 +346,9 @@ class MyLocale implements Translations {
           'client_name': "Nom de L'agent",
           'entries_num': "Nombre d'entrées",
           'total': 'Le total',
+          'unknown_error' : 'Erreur inattendue',
+          'user_id':'Numéro de série',
+          'pass_doesnt_match' :'Le mot de passe et le mot de passe de confirmation ne correspondent pas',
           'invoice_number': 'Numéro de bon',
           'products_num': 'Nombre de produits',
           'tota': 'Montant Total',
@@ -458,6 +465,7 @@ class MyLocale implements Translations {
           'conducteur': 'conducteur',
           'follow_order': 'Livraison de la commande',
           'phone_or_email': 'Téléphone',
+          'email':'Email',
           "Location permissions are permanently denied":
               'Les autorisations du site ont été définitivement refusées',
           "GPS Service is not enabled, turn on GPS location":

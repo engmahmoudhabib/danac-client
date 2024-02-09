@@ -15,7 +15,6 @@ class WaitingScreen extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: Column(
-        
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             FadeInLeft(
@@ -32,10 +31,11 @@ class WaitingScreen extends StatelessWidget {
                 child: FadeInUp(
                   child: Padding(
                     padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.07),
+                        top: MediaQuery.of(context).size.height * 0.1),
                     child: ListTile(
                       title: Text(
                         'wait_account'.tr,
+                        textAlign: TextAlign.center,
                         textDirection: Get.locale!.languageCode == 'ar'
                             ? TextDirection.rtl
                             : TextDirection.ltr,
@@ -65,14 +65,19 @@ class WaitingScreen extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.1,
             ),
             Image.asset(AppImages.waiting_account),
-            SizedBox(height: 30,),
-            Text(
-              'please_wait'.tr,
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-                fontSize: 25,
-                color: Colors.black,
+            SizedBox(
+              height: 30,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Text(
+                'please_wait'.tr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w300,
+                  fontSize: 25,
+                  color: Colors.black,
+                ),
               ),
             )
           ],

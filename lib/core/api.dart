@@ -48,4 +48,5 @@ class API {
       _baseURL + 'get-delivery-arrived-for-employee/';
   static final notificationsURL = _baseURL + 'notifications';
   static final updateLocationURL = _baseURL + 'update-location/';
+   static final verifyCodeURL = _baseURL + 'verify-code/';
 }

@@ -31,5 +31,6 @@ class AppImages {
   static final String mapman = 'assets/images/mapman.png';
   static final String logoWhite = 'assets/images/logo_white.png';
   static final String locationTarget = 'assets/images/location_target.png';
-   static final String arrow = 'assets/images/arrow.png';
+  static final String arrow = 'assets/images/arrow.png';
+  static final String clock = 'assets/images/clock.png';
 }

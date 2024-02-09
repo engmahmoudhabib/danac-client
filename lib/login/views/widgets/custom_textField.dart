@@ -36,7 +36,7 @@ class CustomTextField extends StatefulWidget {
 
 class _CustomTextFieldState extends State<CustomTextField> {
   bool showPassword = false;
-
+ 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -48,7 +48,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         child: TextField(
           controller: widget.controller,
           onChanged: widget.onChange,
-          readOnly: widget.readOnly != null ? widget.readOnly!: false,
+          readOnly: widget.readOnly != null ? widget.readOnly! : false,
           onSubmitted: widget.onSubmitted,
           cursorColor: AppColors.red,
           obscureText: widget.isPassword ? !showPassword : false,
@@ -84,6 +84,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               borderSide: BorderSide(width: 3, color: AppColors.red),
               borderRadius: BorderRadius.circular(8.0),
             ),
+           
             //hintText: widget.hint,
             labelText: widget.hint,
             hintStyle: TextStyle(

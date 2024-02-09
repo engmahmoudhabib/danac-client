@@ -11,7 +11,6 @@ class SignUpController extends GetxController {
   final TextEditingController? nameController = TextEditingController();
   final TextEditingController? phoneController = TextEditingController();
   final TextEditingController? passwordController = TextEditingController();
-  final TextEditingController? emailController = TextEditingController();
   final TextEditingController? municipalityController = TextEditingController();
   final TextEditingController? addressController = TextEditingController();
   final TextEditingController? confirmPasswordController =
@@ -20,30 +19,77 @@ class SignUpController extends GetxController {
   final TextEditingController? workTimeController = TextEditingController();
   final SignUpProvider _signUpProvider = SignUpProvider();
   RxList states = <StatesResponseModel>[].obs;
+  RxBool showSignUpButton = false.obs;
+
+  RxString state = ''.obs;
   signUp(context) async {
-    isLoading.value = true;
-    final response = await _signUpProvider.signUp(
-      nameController?.text,
-      phoneController?.text,
-      passwordController?.text,
-      emailController?.text,
-    );
-    if (response.isLeft()) {
-      Get.offAll(WaitingScreen());
-    } else if (response.isRight()) {
-      Get.defaultDialog(
-        title: 'error'.tr,
-        content: Text(
-          'please_try_again'.tr,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
+    if (passwordController!.text != confirmPasswordController!.text) {
+       Get.defaultDialog(
+          title: 'error'.tr,
+          content: Text(
+            'pass_doesnt_match'.tr,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
+        );
+    } else {
+      isLoading.value = true;
+      final response = await _signUpProvider.signUp(
+        nameController?.text,
+        phoneController?.text,
+        passwordController?.text,
+        addressController?.text,
+        confirmPasswordController?.text,
+        state.value,
+        workTimeController?.text,
+        shopNameController?.text,
+        municipalityController?.text,
+        
       );
+      if (response.isLeft()) {
+        Get.offAll(WaitingScreen());
+      } else if (response.isRight()) {
+        final result = response.fold((l) => null, (r) => r);
+        List<String> errorMessage = [];
+        if (result?.address != null) {
+          errorMessage.add('address'.tr + ' : ' + result?.address![0]);
+        } else if (result?.password != null) {
+          errorMessage.add('password'.tr + ' : ' + result?.password![0]);
+        } else if (result?.password2 != null) {
+          errorMessage
+              .add('confirm_password'.tr + ' : ' + result?.password2![0]);
+        } else if (result?.phonenumber != null) {
+          errorMessage.add('phone'.tr + ' : ' + result?.phonenumber![0]);
+        } else if (result?.storeName != null) {
+          errorMessage.add('shop_name'.tr + ' : ' + result?.storeName![0]);
+        } else if (result?.town != null) {
+          errorMessage.add('baladieh'.tr + ' : ' + result?.town![0]);
+        } else if (result?.username != null) {
+          errorMessage.add('name'.tr + ' : ' + result?.username![0]);
+        } else if (result?.workHours != null) {
+          errorMessage.add('work_time'.tr + ' : ' + result?.workHours![0]);
+        } else if (result?.x != null) {
+          errorMessage.add('long'.tr + ' : ' + result?.x![0]);
+        } else if (result?.y != null) {
+          errorMessage.add('lat'.tr + ' : ' + result?.y![0]);
+        }
+        Get.defaultDialog(
+          title: 'error'.tr,
+          content: Text(
+            errorMessage.join('\n'),
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        );
+      }
+      isLoading.value = false;
     }
-    isLoading.value = false;
   }
 
   getStates() async {
@@ -54,7 +100,6 @@ class SignUpController extends GetxController {
       states.clear();
       states.addAll(result!);
       states.refresh();
-  
     } else if (response.isRight()) {
       Get.defaultDialog(
         title: 'error'.tr,
@@ -119,7 +164,8 @@ class SignUpController extends GetxController {
               // iconSelect: Icon(Icons.check, size: 12),
               separatorStyle: TextStyle(color: AppColors.red, fontSize: 30),
               onSelect: (from, to) {
-                print("From : $from, To : $to");
+                workTimeController?.text =
+                    "From : ${from.hour}:${from.minute}, To : ${to.hour}:${to.minute}";
                 Navigator.pop(context);
               },
               onCancel: () => Navigator.pop(context),

@@ -36,7 +36,7 @@ class SignUpScreen extends StatelessWidget {
                           top: MediaQuery.of(context).size.height * 0.07),
                       child: ListTile(
                         title: Text(
-                          'create_account'.tr,
+                         controller.isLoading.value == true? 'create_account'.tr : 'create_account'.tr,
                           textAlign: TextAlign.center,
                           textDirection: Get.locale!.languageCode == 'ar'
                               ? TextDirection.rtl
@@ -118,7 +118,7 @@ class SignUpScreen extends StatelessWidget {
                     absorbing: true,
                     child: CustomTextField(
                       controller: controller.workTimeController,
-                      prefixIcon: null,
+                      prefixIcon: AppImages.clock,
                       suffixIcon: null,
                       readOnly: true,
                       hint: 'work_time'.tr,
@@ -139,7 +139,7 @@ class SignUpScreen extends StatelessWidget {
                   suffixIcon: AppImages.eye,
                   hint: 'password'.tr,
                   isPassword: true,
-                  textInputAction: TextInputAction.done,
+                  textInputAction: TextInputAction.next,
                   textInputType: TextInputType.emailAddress,
                 ),
               ),
@@ -160,42 +160,56 @@ class SignUpScreen extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
-              FadeInLeft(
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  height: 45,
-                  child: controller.isLoading.value == true
-                      ? Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.red,
-                          ),
-                        )
-                      : ElevatedButton(
-                          onPressed: () {},
-                          child: Text(
-                            'create_account'.tr,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all<Color>(AppColors.red),
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8.0),
-                                side: BorderSide(
+              controller.nameController!.text.isEmpty ||
+                      controller.shopNameController!.text.isEmpty ||
+                      controller.phoneController!.text.isEmpty ||
+                      controller.passwordController!.text.isEmpty ||
+                      controller.confirmPasswordController!.text.isEmpty ||
+                      controller.state.value == '' ||
+                      controller.municipalityController!.text.isEmpty ||
+                      controller.addressController!.text.isEmpty ||
+                      controller.workTimeController!.text.isEmpty 
+                      
+                  ? SizedBox()
+                  : FadeInLeft(
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: 45,
+                        child: controller.isLoading.value == true
+                            ? Center(
+                                child: CircularProgressIndicator(
                                   color: AppColors.red,
                                 ),
+                              )
+                            : ElevatedButton(
+                                onPressed: () {
+                                  controller.signUp(context);
+                                },
+                                child: Text(
+                                  'create_account'.tr,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          AppColors.red),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      side: BorderSide(
+                                        color: AppColors.red,
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                        ),
-                ),
-              ),
+                      ),
+                    ),
             ],
           ),
         ),

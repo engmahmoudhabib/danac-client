@@ -334,6 +334,7 @@ class _MapScreenState extends State<MapScreen> {
                                           ),
                                         );
                                       });
+                                      controller.state.value = data?.name ?? '';
                                       GetStorage().write('lat', lat);
                                       GetStorage().write('long', long);
                                       _mapController.move(

@@ -7,6 +7,7 @@ import 'package:storeapp/core/api.dart';
 import 'package:storeapp/login/models/get_otp_response_model.dart';
 import 'package:storeapp/login/models/login_request_model.dart';
 import 'package:storeapp/login/models/login_response_model.dart';
+import 'package:storeapp/login/models/verify_code_models.dart';
 
 class LoginProvider extends GetConnect {
   Future<Either<LoginResponseModel, String?>> login(
@@ -41,6 +42,31 @@ class LoginProvider extends GetConnect {
       return Right(e.toString());
     }
   }
+
+Future<Either<VerifyCodeResponseModel, VerifyCodeErrorModel>> verifyCode(String? phone, String? id) async{
+ try {
+      final response = await post(
+        API.verifyCodeURL,
+        VerifyCodeRequestModel(
+          userId:id != null ? int.parse(id): null,
+          phonenumber: phone,
+       
+        ).toJson(),
+      );
+
+      if (response.status.isOk) {
+        return Left(VerifyCodeResponseModel.fromJson(response.body));
+      } else {
+        return Right(VerifyCodeErrorModel.fromJson(response.body));
+      }
+    } catch (e) {
+     
+       return Right(VerifyCodeErrorModel(error: 'unknown_error'.tr));
+    }
+}
+
+
+
 
   Future<Either<GetOTPResponseModel, String?>> getOTPCode(
     String? email,

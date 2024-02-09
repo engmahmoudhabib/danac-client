@@ -15,6 +15,7 @@ class LoginController extends GetxController {
   final TextEditingController? passwordController = TextEditingController();
   final TextEditingController? password1Controller = TextEditingController();
   final TextEditingController? password2Controller = TextEditingController();
+  final TextEditingController? idController = TextEditingController();
   RxString otp = ''.obs;
   RxString user = ''.obs;
   final LoginProvider _loginProvider = LoginProvider();
@@ -32,7 +33,7 @@ class LoginController extends GetxController {
       GetStorage().write('access', result?.tokens?.access);
       GetStorage().write('refresh', result?.tokens?.refresh);
       GetStorage().write('image', result?.images);
-        GetStorage().write('id', result?.id);
+      GetStorage().write('id', result?.id);
       Get.offAllNamed(Routes.HOME);
     } else if (response.isRight()) {
       final result = response.fold((l) => null, (r) => r);
@@ -54,6 +55,35 @@ class LoginController extends GetxController {
         );
       }
       ;
+    }
+    isLoading.value = false;
+  }
+
+  verifyCode() async {
+    isLoading.value = true;
+    final response = await _loginProvider.verifyCode(
+      phoneController?.text,
+      idController?.text,
+    );
+    if (response.isLeft()) {
+      final result = response.fold((l) => l, (r) => null);
+      phoneController?.clear();
+      idController?.clear();
+      user.value = result?.userId.toString() ?? '';
+      Get.to(ResetPasswordScreen());
+    } else if (response.isRight()) {
+      final result = response.fold((l) => null, (r) => r);
+      Get.defaultDialog(
+        title: 'error'.tr,
+        content: Text(
+          result?.error ?? '',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 15,
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      );
     }
     isLoading.value = false;
   }
@@ -86,7 +116,7 @@ class LoginController extends GetxController {
     isLoading.value = false;
   }
 
-  sendOTP(type , context) async {
+  sendOTP(type, context) async {
     isLoading.value = true;
     final response = await _loginProvider.sendOTPCode(
       type,

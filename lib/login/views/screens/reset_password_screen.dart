@@ -36,6 +36,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       child: ListTile(
                         title: Text(
                           'reset_password_title'.tr,
+                          textAlign: TextAlign.center,
                           textDirection: Get.locale!.languageCode == 'ar'
                               ? TextDirection.rtl
                               : TextDirection.ltr,
@@ -47,12 +48,13 @@ class ResetPasswordScreen extends StatelessWidget {
                         ),
                         subtitle: Text(
                           'reset_password_sub_title'.tr,
+                          textAlign: TextAlign.center,
                           textDirection: Get.locale!.languageCode == 'ar'
                               ? TextDirection.rtl
                               : TextDirection.ltr,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
-                            fontSize: 18,
+                            fontSize: 14,
                             color: Colors.white,
                           ),
                         ),
@@ -120,7 +122,7 @@ class ResetPasswordScreen extends StatelessWidget {
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(
                               RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50.0),
+                                borderRadius: BorderRadius.circular(8.0),
                                 side: BorderSide(
                                   color: AppColors.red,
                                 ),

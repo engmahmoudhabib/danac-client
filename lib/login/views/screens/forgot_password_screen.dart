@@ -6,6 +6,7 @@ import 'package:storeapp/login/controller/login_controller.dart';
 import 'package:storeapp/login/views/widgets/custom_textField.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
+  
   ForgotPasswordScreen({super.key});
   final LoginController controller = Get.put(LoginController());
   @override
@@ -35,6 +36,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                         child: ListTile(
                           title: Text(
                             'forgot_password'.tr,
+                            textAlign: TextAlign.center,
                             textDirection: Get.locale!.languageCode == 'ar'
                                 ? TextDirection.rtl
                                 : TextDirection.ltr,
@@ -46,12 +48,13 @@ class ForgotPasswordScreen extends StatelessWidget {
                           ),
                           subtitle: Text(
                             'please_enter_phone'.tr,
+                            textAlign: TextAlign.center,
                             textDirection: Get.locale!.languageCode == 'ar'
                                 ? TextDirection.rtl
                                 : TextDirection.ltr,
                             style: TextStyle(
                               fontWeight: FontWeight.w400,
-                              fontSize: 18,
+                              fontSize: 14,
                               color: Colors.white,
                             ),
                           ),
@@ -68,14 +71,28 @@ class ForgotPasswordScreen extends StatelessWidget {
                     controller: controller.phoneController,
                     prefixIcon: null,
                     suffixIcon: null,
-                    hint: 'email'.tr,
+                    hint: 'phone'.tr,
                     isPassword: false,
                     textInputAction: TextInputAction.next,
                     textInputType: TextInputType.emailAddress,
                   ),
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.05,
+                  height: 20,
+                ),
+                FadeInDown(
+                  child: CustomTextField(
+                    controller: controller.idController,
+                    prefixIcon: null,
+                    suffixIcon: null,
+                    hint: 'user_id'.tr,
+                    isPassword: false,
+                    textInputAction: TextInputAction.next,
+                    textInputType: TextInputType.emailAddress,
+                  ),
+                ),
+                SizedBox(
+                  height: 40,
                 ),
                 FadeInLeft(
                   child: SizedBox(
@@ -89,7 +106,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                           )
                         : ElevatedButton(
                             onPressed: () {
-                              controller.getOTP();
+                              // controller.getOTP();
+                              controller.verifyCode();
                             },
                             child: Text(
                               'send_code'.tr,
